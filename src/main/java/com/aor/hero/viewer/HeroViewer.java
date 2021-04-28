@@ -1,7 +1,6 @@
 package com.aor.hero.viewer;
 
 import com.aor.hero.gui.GUI;
-import com.aor.hero.model.elements.Element;
 import com.aor.hero.model.elements.Hero;
 
 public class HeroViewer implements ElementViewer<Hero> {
