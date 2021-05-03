@@ -21,7 +21,7 @@ public class Game {
 
         Arena arena = new RandomArenaBuilder(width, height, numberOfMonsters).createArena();
         ArenaViewer viewer = new ArenaViewer(gui);
-        ArenaController controller = new ArenaController(arena, viewer);
+        ArenaController controller = new ArenaController(arena, viewer, gui);
 
         controller.start();
     }
