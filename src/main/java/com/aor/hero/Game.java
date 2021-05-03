@@ -21,7 +21,7 @@ public class Game {
         GUI gui = new LanternaGUI(arena.getWidth(), arena.getHeight());
 
         ArenaViewer viewer = new ArenaViewer(gui);
-        ArenaController controller = new ArenaController(arena, viewer);
+        ArenaController controller = new ArenaController(arena, viewer, gui);
 
         controller.start();
     }
