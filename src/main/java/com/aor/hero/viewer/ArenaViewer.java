@@ -39,8 +39,4 @@ public class ArenaViewer {
     public void close() throws IOException {
         gui.close();
     }
-
-    public GUI.ACTION getNextAction() throws IOException {
-        return gui.getNextAction();
-    }
 }
