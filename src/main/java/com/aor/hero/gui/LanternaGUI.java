@@ -6,6 +6,7 @@ import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
+import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
@@ -18,16 +19,20 @@ import java.net.URISyntaxException;
 import java.net.URL;
 
 public class LanternaGUI implements GUI {
-    private final TerminalScreen screen;
+    private final Screen screen;
+
+    public LanternaGUI(Screen screen) {
+        this.screen = screen;
+    }
 
     public LanternaGUI(int width, int height) throws IOException, FontFormatException, URISyntaxException {
         AWTTerminalFontConfiguration fontConfig = loadSquareFont();
         Terminal terminal = createTerminal(width, height, fontConfig);
-        screen = createScreen(terminal);
+        this.screen = createScreen(terminal);
     }
 
-    private TerminalScreen createScreen(Terminal terminal) throws IOException {
-        final TerminalScreen screen;
+    private Screen createScreen(Terminal terminal) throws IOException {
+        final Screen screen;
         screen = new TerminalScreen(terminal);
 
         screen.setCursorPosition(null);
