@@ -11,11 +11,15 @@ public class ArenaController extends GameController {
     private final MonsterController monsterController;
 
     private final ArenaViewer viewer;
+    private final GUI gui;
 
-    public ArenaController(Arena arena, ArenaViewer viewer) {
+    public ArenaController(Arena arena, ArenaViewer viewer, GUI gui) {
         super(arena);
 
         this.viewer = viewer;
+
+        this.gui = gui;
+
         this.heroController = new HeroController(arena);
         this.monsterController = new MonsterController(arena);
     }
@@ -24,7 +28,7 @@ public class ArenaController extends GameController {
         while (getArena().getHero().getEnergy() > 0) {
             viewer.draw(getArena());
 
-            GUI.ACTION action = viewer.getNextAction();
+            GUI.ACTION action = gui.getNextAction();
             if (action == GUI.ACTION.QUIT) break;
 
             heroController.doAction(action);
