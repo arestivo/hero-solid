@@ -45,7 +45,8 @@ public class ArenaController extends GameController {
 
             if (sleepTime > 0) try {
                 Thread.sleep(sleepTime);
-            } catch (InterruptedException e) { }
+            } catch (InterruptedException e) {
+            }
         }
 
         viewer.close();

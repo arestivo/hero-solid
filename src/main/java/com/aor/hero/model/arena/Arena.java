@@ -21,6 +21,14 @@ public class Arena {
         this.height = height;
     }
 
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
     public Hero getHero() {
         return hero;
     }
