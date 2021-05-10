@@ -56,4 +56,12 @@ class ArenaViewerTest {
         Mockito.verify(gui, Mockito.times(1)).drawHero(new Position(5, 8));
         Mockito.verify(gui, Mockito.times(1)).drawHero(Mockito.any(Position.class));
     }
+
+    @Test
+    void refreshAndClear() throws IOException {
+        viewer.draw(arena);
+
+        Mockito.verify(gui, Mockito.times(1)).clear();
+        Mockito.verify(gui, Mockito.times(1)).refresh();
+    }
 }
