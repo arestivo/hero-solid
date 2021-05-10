@@ -3,8 +3,8 @@ package com.aor.hero.controller.game;
 import com.aor.hero.game.Game;
 import com.aor.hero.game.MenuState;
 import com.aor.hero.gui.GUI;
-import com.aor.hero.model.menu.Menu;
 import com.aor.hero.model.game.arena.Arena;
+import com.aor.hero.model.menu.Menu;
 
 import java.io.IOException;
 

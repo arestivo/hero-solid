@@ -1,8 +1,8 @@
 package com.aor.hero.viewer;
 
 import com.aor.hero.gui.GUI;
-import com.aor.hero.model.menu.Menu;
 import com.aor.hero.model.Position;
+import com.aor.hero.model.menu.Menu;
 
 import java.io.IOException;
 
@@ -21,7 +21,7 @@ public class MenuViewer extends Viewer<Menu> {
             gui.drawText(
                     new Position(5, 7 + i),
                     getModel().getEntry(i),
-                    getModel().isSelected(i)?"#FFD700":"#FFFFFF");
+                    getModel().isSelected(i) ? "#FFD700" : "#FFFFFF");
         gui.refresh();
     }
 }

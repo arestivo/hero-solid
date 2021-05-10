@@ -1,8 +1,8 @@
 package com.aor.hero.game;
 
-import com.aor.hero.viewer.Viewer;
 import com.aor.hero.controller.Controller;
 import com.aor.hero.gui.GUI;
+import com.aor.hero.viewer.Viewer;
 
 import java.io.IOException;
 
@@ -18,6 +18,7 @@ public abstract class State<T> {
     }
 
     protected abstract Viewer<T> getViewer();
+
     protected abstract Controller<T> getController();
 
     public T getModel() {

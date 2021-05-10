@@ -1,7 +1,6 @@
 package com.aor.hero.game;
 
 import com.aor.hero.gui.LanternaGUI;
-import com.aor.hero.model.game.arena.LoaderArenaBuilder;
 import com.aor.hero.model.menu.Menu;
 
 import java.awt.*;
@@ -12,13 +11,13 @@ public class Game {
     private final LanternaGUI gui;
     private State state;
 
-    public static void main(String[] args) throws IOException, FontFormatException, URISyntaxException {
-        new Game().start();
-    }
-
     public Game() throws FontFormatException, IOException, URISyntaxException {
         this.gui = new LanternaGUI(20, 20);
         this.state = new MenuState(new Menu());
+    }
+
+    public static void main(String[] args) throws IOException, FontFormatException, URISyntaxException {
+        new Game().start();
     }
 
     public void setState(State state) {
@@ -39,7 +38,8 @@ public class Game {
 
             if (sleepTime > 0) try {
                 Thread.sleep(sleepTime);
-            } catch (InterruptedException e) { }
+            } catch (InterruptedException e) {
+            }
         }
 
         gui.close();
