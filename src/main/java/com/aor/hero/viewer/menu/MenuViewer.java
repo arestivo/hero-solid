@@ -1,8 +1,9 @@
-package com.aor.hero.viewer;
+package com.aor.hero.viewer.menu;
 
 import com.aor.hero.gui.GUI;
 import com.aor.hero.model.Position;
 import com.aor.hero.model.menu.Menu;
+import com.aor.hero.viewer.Viewer;
 
 import java.io.IOException;
 
@@ -12,9 +13,7 @@ public class MenuViewer extends Viewer<Menu> {
     }
 
     @Override
-    public void draw(GUI gui) throws IOException {
-        gui.clear();
-
+    public void drawElements(GUI gui) {
         gui.drawText(new Position(5, 5), "Menu", "#FFFFFF");
 
         for (int i = 0; i < getModel().getNumberEntries(); i++)
@@ -22,6 +21,5 @@ public class MenuViewer extends Viewer<Menu> {
                     new Position(5, 7 + i),
                     getModel().getEntry(i),
                     getModel().isSelected(i) ? "#FFD700" : "#FFFFFF");
-        gui.refresh();
     }
 }

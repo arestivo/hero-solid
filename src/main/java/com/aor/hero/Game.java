@@ -18,10 +18,6 @@ public class Game {
         this.state = new MenuState(new Menu());
     }
 
-    public static void main(String[] args) throws IOException, FontFormatException, URISyntaxException {
-        new Game().start();
-    }
-
     public void setState(State state) {
         this.state = state;
     }
@@ -38,12 +34,15 @@ public class Game {
             long elapsedTime = System.currentTimeMillis() - startTime;
             long sleepTime = frameTime - elapsedTime;
 
-            if (sleepTime > 0) try {
-                Thread.sleep(sleepTime);
-            } catch (InterruptedException e) {
-            }
+            try {
+                if (sleepTime > 0) Thread.sleep(sleepTime);
+            } catch (InterruptedException e) { }
         }
 
         gui.close();
+    }
+
+    public static void main(String[] args) throws IOException, FontFormatException, URISyntaxException {
+        new Game().start();
     }
 }

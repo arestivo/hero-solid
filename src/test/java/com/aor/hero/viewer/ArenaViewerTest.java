@@ -6,6 +6,7 @@ import com.aor.hero.model.game.arena.Arena;
 import com.aor.hero.model.game.elements.Hero;
 import com.aor.hero.model.game.elements.Monster;
 import com.aor.hero.model.game.elements.Wall;
+import com.aor.hero.viewer.game.GameViewer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;

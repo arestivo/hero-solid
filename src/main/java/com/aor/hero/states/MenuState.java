@@ -3,7 +3,7 @@ package com.aor.hero.states;
 import com.aor.hero.controller.Controller;
 import com.aor.hero.controller.menu.MenuController;
 import com.aor.hero.model.menu.Menu;
-import com.aor.hero.viewer.MenuViewer;
+import com.aor.hero.viewer.menu.MenuViewer;
 import com.aor.hero.viewer.Viewer;
 
 public class MenuState extends State<Menu> {
