@@ -1,4 +1,4 @@
-package com.aor.hero.game.states;
+package com.aor.hero.states;
 
 import com.aor.hero.controller.Controller;
 import com.aor.hero.controller.game.ArenaController;

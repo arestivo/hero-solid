@@ -1,6 +1,6 @@
 package com.aor.hero.controller;
 
-import com.aor.hero.game.Game;
+import com.aor.hero.Game;
 import com.aor.hero.gui.GUI;
 
 import java.io.IOException;

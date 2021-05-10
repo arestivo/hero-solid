@@ -1,6 +1,6 @@
 package com.aor.hero.controller.game;
 
-import com.aor.hero.game.Game;
+import com.aor.hero.Game;
 import com.aor.hero.gui.GUI;
 import com.aor.hero.model.Position;
 import com.aor.hero.model.game.arena.Arena;
