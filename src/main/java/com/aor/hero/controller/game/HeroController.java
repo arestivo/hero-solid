@@ -1,8 +1,9 @@
-package com.aor.hero.controller;
+package com.aor.hero.controller.game;
 
+import com.aor.hero.game.Game;
 import com.aor.hero.gui.GUI;
 import com.aor.hero.model.Position;
-import com.aor.hero.model.arena.Arena;
+import com.aor.hero.model.game.arena.Arena;
 
 public class HeroController extends GameController {
     public HeroController(Arena arena) {
@@ -10,29 +11,30 @@ public class HeroController extends GameController {
     }
 
     public void moveHeroLeft() {
-        moveHero(arena.getHero().getPosition().getLeft());
+        moveHero(getModel().getHero().getPosition().getLeft());
     }
 
     public void moveHeroRight() {
-        moveHero(arena.getHero().getPosition().getRight());
+        moveHero(getModel().getHero().getPosition().getRight());
     }
 
     public void moveHeroUp() {
-        moveHero(arena.getHero().getPosition().getUp());
+        moveHero(getModel().getHero().getPosition().getUp());
     }
 
     public void moveHeroDown() {
-        moveHero(arena.getHero().getPosition().getDown());
+        moveHero(getModel().getHero().getPosition().getDown());
     }
 
     private void moveHero(Position position) {
-        if (arena.isEmpty(position)) {
-            arena.getHero().setPosition(position);
-            if (arena.isMonster(position)) arena.getHero().decreaseEnergy();
+        if (getModel().isEmpty(position)) {
+            getModel().getHero().setPosition(position);
+            if (getModel().isMonster(position)) getModel().getHero().decreaseEnergy();
         }
     }
 
-    public void doAction(GUI.ACTION action) {
+    @Override
+    public void step(Game game, GUI.ACTION action, long time) {
         if (action == GUI.ACTION.UP) moveHeroUp();
         if (action == GUI.ACTION.RIGHT) moveHeroRight();
         if (action == GUI.ACTION.DOWN) moveHeroDown();

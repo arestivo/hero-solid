@@ -1,13 +1,18 @@
 package com.aor.hero.controller;
 
+import com.aor.hero.controller.game.MonsterController;
+import com.aor.hero.game.Game;
+import com.aor.hero.gui.GUI;
 import com.aor.hero.model.Position;
-import com.aor.hero.model.arena.Arena;
-import com.aor.hero.model.elements.Hero;
-import com.aor.hero.model.elements.Monster;
-import com.aor.hero.model.elements.Wall;
+import com.aor.hero.model.game.arena.Arena;
+import com.aor.hero.model.game.elements.Hero;
+import com.aor.hero.model.game.elements.Monster;
+import com.aor.hero.model.game.elements.Wall;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
+import java.io.IOException;
 import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -17,6 +22,7 @@ class MonsterControllerTest {
     private MonsterController controller;
     private Hero hero;
     private Arena arena;
+    private Game game;
 
     @BeforeEach
     void setUp() {
@@ -29,20 +35,22 @@ class MonsterControllerTest {
         arena.setMonsters(Arrays.asList());
 
         controller = new MonsterController(arena);
+
+        game = Mockito.mock(Game.class);
     }
 
     @Test
-    void moveMonsters() {
+    void moveMonsters() throws IOException {
         Monster monster = new Monster(5, 5);
         arena.setMonsters(Arrays.asList(monster));
 
-        controller.moveMonsters();
+        controller.step(game, GUI.ACTION.NONE, 1000);
 
         assertNotEquals(new Position(5, 5), monster.getPosition());
     }
 
     @Test
-    void moveMonstersClosed() {
+    void moveMonstersClosed() throws IOException {
         Monster monster = new Monster(5, 5);
         arena.setMonsters(Arrays.asList(monster));
         arena.setWalls(Arrays.asList(
@@ -53,13 +61,13 @@ class MonsterControllerTest {
         ));
 
         for (int i = 0; i < 10; i++)
-            controller.moveMonsters();
+            controller.step(game, GUI.ACTION.NONE, 1000);
 
         assertEquals(new Position(5, 5), monster.getPosition());
     }
 
     @Test
-    void moveMonstersGap() {
+    void moveMonstersGap() throws IOException {
         Monster monster = new Monster(5, 5);
         arena.setMonsters(Arrays.asList(monster));
         arena.setWalls(Arrays.asList(
@@ -68,8 +76,12 @@ class MonsterControllerTest {
                 new Wall(5, 4)
         ));
 
-        while (monster.getPosition().equals(new Position(5, 5)))
-            controller.moveMonsters();
+        long time = 0;
+
+        while (monster.getPosition().equals(new Position(5, 5))) {
+            time += 500;
+            controller.step(game, GUI.ACTION.NONE, time);
+        }
 
         assertEquals(new Position(5, 6), monster.getPosition());
     }

@@ -1,9 +1,10 @@
 package com.aor.hero.controller;
 
+import com.aor.hero.controller.game.HeroController;
 import com.aor.hero.model.Position;
-import com.aor.hero.model.arena.Arena;
-import com.aor.hero.model.elements.Hero;
-import com.aor.hero.model.elements.Wall;
+import com.aor.hero.model.game.arena.Arena;
+import com.aor.hero.model.game.elements.Hero;
+import com.aor.hero.model.game.elements.Wall;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

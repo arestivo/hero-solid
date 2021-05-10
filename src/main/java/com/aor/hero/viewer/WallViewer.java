@@ -1,11 +1,11 @@
 package com.aor.hero.viewer;
 
 import com.aor.hero.gui.GUI;
-import com.aor.hero.model.elements.Wall;
+import com.aor.hero.model.game.elements.Wall;
 
 public class WallViewer implements ElementViewer<Wall> {
     @Override
-    public void drawElement(Wall wall, GUI gui) {
+    public void draw(Wall wall, GUI gui) {
         gui.drawWall(wall.getPosition());
     }
 }

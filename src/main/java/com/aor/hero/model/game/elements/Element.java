@@ -1,4 +1,4 @@
-package com.aor.hero.model.elements;
+package com.aor.hero.model.game.elements;
 
 import com.aor.hero.model.Position;
 

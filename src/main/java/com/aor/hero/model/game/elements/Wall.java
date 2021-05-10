@@ -1,4 +1,4 @@
-package com.aor.hero.model.elements;
+package com.aor.hero.model.game.elements;
 
 public class Wall extends Element {
     public Wall(int x, int y) {

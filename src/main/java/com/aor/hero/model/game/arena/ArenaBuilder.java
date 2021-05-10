@@ -1,8 +1,8 @@
-package com.aor.hero.model.arena;
+package com.aor.hero.model.game.arena;
 
-import com.aor.hero.model.elements.Hero;
-import com.aor.hero.model.elements.Monster;
-import com.aor.hero.model.elements.Wall;
+import com.aor.hero.model.game.elements.Hero;
+import com.aor.hero.model.game.elements.Monster;
+import com.aor.hero.model.game.elements.Wall;
 
 import java.util.List;
 

@@ -16,7 +16,7 @@ pitest {
 }
 
 application {
-    mainClass.set('com.aor.hero.Game')
+    mainClass.set('com.aor.hero.game.Game')
 }
 
 dependencies {

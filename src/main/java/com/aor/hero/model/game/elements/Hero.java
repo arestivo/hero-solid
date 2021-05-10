@@ -1,4 +1,4 @@
-package com.aor.hero.model.elements;
+package com.aor.hero.model.game.elements;
 
 public class Hero extends Element {
     private int energy;
