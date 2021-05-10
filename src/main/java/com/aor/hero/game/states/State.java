@@ -1,6 +1,7 @@
-package com.aor.hero.game;
+package com.aor.hero.game.states;
 
 import com.aor.hero.controller.Controller;
+import com.aor.hero.game.Game;
 import com.aor.hero.gui.GUI;
 import com.aor.hero.viewer.Viewer;
 
@@ -25,7 +26,7 @@ public abstract class State<T> {
         return model;
     }
 
-    protected void step(Game game, GUI gui, long time) throws IOException {
+    public void step(Game game, GUI gui, long time) throws IOException {
         GUI.ACTION action = gui.getNextAction();
         controller.step(game, action, time);
         viewer.draw(gui);

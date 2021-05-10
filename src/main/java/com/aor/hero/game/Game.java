@@ -1,5 +1,7 @@
 package com.aor.hero.game;
 
+import com.aor.hero.game.states.MenuState;
+import com.aor.hero.game.states.State;
 import com.aor.hero.gui.LanternaGUI;
 import com.aor.hero.model.menu.Menu;
 
