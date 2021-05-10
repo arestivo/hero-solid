@@ -1,10 +1,10 @@
 package com.aor.hero.controller.game;
 
 import com.aor.hero.Game;
-import com.aor.hero.states.MenuState;
 import com.aor.hero.gui.GUI;
 import com.aor.hero.model.game.arena.Arena;
 import com.aor.hero.model.menu.Menu;
+import com.aor.hero.states.MenuState;
 
 import java.io.IOException;
 

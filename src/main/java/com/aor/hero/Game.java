@@ -1,9 +1,9 @@
 package com.aor.hero;
 
-import com.aor.hero.states.MenuState;
-import com.aor.hero.states.State;
 import com.aor.hero.gui.LanternaGUI;
 import com.aor.hero.model.menu.Menu;
+import com.aor.hero.states.MenuState;
+import com.aor.hero.states.State;
 
 import java.awt.*;
 import java.io.IOException;

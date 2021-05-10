@@ -1,7 +1,7 @@
 package com.aor.hero.states;
 
-import com.aor.hero.controller.Controller;
 import com.aor.hero.Game;
+import com.aor.hero.controller.Controller;
 import com.aor.hero.gui.GUI;
 import com.aor.hero.viewer.Viewer;
 
