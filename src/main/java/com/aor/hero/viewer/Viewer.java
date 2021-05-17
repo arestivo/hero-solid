@@ -19,7 +19,9 @@ public abstract class Viewer<T> {
         gui.clear();
         drawElements(gui);
         gui.refresh();
-    };
+    }
+
+    ;
 
     protected abstract void drawElements(GUI gui);
 }

@@ -5,8 +5,6 @@ import com.aor.hero.model.Position;
 import com.aor.hero.model.menu.Menu;
 import com.aor.hero.viewer.Viewer;
 
-import java.io.IOException;
-
 public class MenuViewer extends Viewer<Menu> {
     public MenuViewer(Menu menu) {
         super(menu);

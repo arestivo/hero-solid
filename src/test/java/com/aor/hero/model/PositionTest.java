@@ -1,35 +1,34 @@
 package com.aor.hero.model;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import net.jqwik.api.ForAll;
+import net.jqwik.api.Property;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PositionTest {
     private Position position;
 
-    @BeforeEach
-    void setUp() {
-        position = new Position(10, 10);
+    @Property
+    void getLeft(@ForAll int x, @ForAll int y) {
+        assertEquals(x - 1, new Position(x, y).getLeft().getX());
+        assertEquals(y, new Position(x, y).getLeft().getY());
     }
 
-    @Test
-    void getLeft() {
-        assertEquals(9, position.getLeft().getX());
+    @Property
+    void getRight(@ForAll int x, @ForAll int y) {
+        assertEquals(x + 1, new Position(x, y).getRight().getX());
+        assertEquals(y, new Position(x, y).getRight().getY());
     }
 
-    @Test
-    void getRight() {
-        assertEquals(11, position.getRight().getX());
+    @Property
+    void getUp(@ForAll int x, @ForAll int y) {
+        assertEquals(x, new Position(x, y).getUp().getX());
+        assertEquals(y - 1, new Position(x, y).getUp().getY());
     }
 
-    @Test
-    void getUp() {
-        assertEquals(9, position.getUp().getY());
-    }
-
-    @Test
-    void getDown() {
-        assertEquals(11, position.getDown().getY());
+    @Property
+    void getDown(@ForAll int x, @ForAll int y) {
+        assertEquals(x, new Position(x, y).getDown().getX());
+        assertEquals(y + 1, new Position(x, y).getDown().getY());
     }
 }
