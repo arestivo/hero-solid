@@ -4,19 +4,24 @@ import com.aor.hero.model.Position;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
-import com.googlecode.lanterna.input.KeyStroke;
-import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
+import com.googlecode.lanterna.terminal.swing.AWTTerminalFrame;
 
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
 
 public class LanternaGUI implements GUI {
     private final Screen screen;
@@ -24,6 +29,8 @@ public class LanternaGUI implements GUI {
     public LanternaGUI(Screen screen) {
         this.screen = screen;
     }
+
+    Set<Integer> pressedKeys = new HashSet<>();
 
     public LanternaGUI(int width, int height) throws IOException, FontFormatException, URISyntaxException {
         AWTTerminalFontConfiguration fontConfig = loadSquareFont();
@@ -48,6 +55,19 @@ public class LanternaGUI implements GUI {
         terminalFactory.setForceAWTOverSwing(true);
         terminalFactory.setTerminalEmulatorFontConfiguration(fontConfig);
         Terminal terminal = terminalFactory.createTerminal();
+
+        ((AWTTerminalFrame)terminal).getComponent(0).addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                pressedKeys.add(e.getKeyCode());
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                pressedKeys.remove(e.getKeyCode());
+            }
+        });
+
         return terminal;
     }
 
@@ -64,21 +84,17 @@ public class LanternaGUI implements GUI {
         return fontConfig;
     }
 
-    public ACTION getNextAction() throws IOException {
-        KeyStroke keyStroke = screen.pollInput();
-        if (keyStroke == null) return ACTION.NONE;
+    public List<ACTION> getNextActions() throws IOException {
+        List<ACTION> actions = new LinkedList<>();
 
-        if (keyStroke.getKeyType() == KeyType.EOF) return ACTION.QUIT;
-        if (keyStroke.getKeyType() == KeyType.Character && keyStroke.getCharacter() == 'q') return ACTION.QUIT;
+        if (pressedKeys.contains(KeyEvent.VK_Q)) actions.add(ACTION.QUIT);
+        if (pressedKeys.contains(KeyEvent.VK_UP)) actions.add(ACTION.UP);
+        if (pressedKeys.contains(KeyEvent.VK_RIGHT)) actions.add(ACTION.RIGHT);
+        if (pressedKeys.contains(KeyEvent.VK_DOWN)) actions.add(ACTION.DOWN);
+        if (pressedKeys.contains(KeyEvent.VK_LEFT)) actions.add(ACTION.LEFT);
+        if (pressedKeys.contains(KeyEvent.VK_ENTER)) actions.add(ACTION.SELECT);
 
-        if (keyStroke.getKeyType() == KeyType.ArrowUp) return ACTION.UP;
-        if (keyStroke.getKeyType() == KeyType.ArrowRight) return ACTION.RIGHT;
-        if (keyStroke.getKeyType() == KeyType.ArrowDown) return ACTION.DOWN;
-        if (keyStroke.getKeyType() == KeyType.ArrowLeft) return ACTION.LEFT;
-
-        if (keyStroke.getKeyType() == KeyType.Enter) return ACTION.SELECT;
-
-        return ACTION.NONE;
+        return actions;
     }
 
     @Override

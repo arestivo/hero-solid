@@ -7,6 +7,7 @@ import com.aor.hero.model.menu.Menu;
 import com.aor.hero.states.MenuState;
 
 import java.io.IOException;
+import java.util.List;
 
 public class ArenaController extends GameController {
     private final HeroController heroController;
@@ -19,12 +20,12 @@ public class ArenaController extends GameController {
         this.monsterController = new MonsterController(arena);
     }
 
-    public void step(Game game, GUI.ACTION action, long time) throws IOException {
-        if (action == GUI.ACTION.QUIT || getModel().getHero().getEnergy() == 0)
+    public void step(Game game, List<GUI.ACTION> actions, long time) throws IOException {
+        if (actions.contains(GUI.ACTION.QUIT) || getModel().getHero().getEnergy() == 0)
             game.setState(new MenuState(new Menu()));
         else {
-            heroController.step(game, action, time);
-            monsterController.step(game, action, time);
+            heroController.step(game, actions, time);
+            monsterController.step(game, actions, time);
         }
     }
 }

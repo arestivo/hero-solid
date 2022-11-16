@@ -6,6 +6,7 @@ import com.aor.hero.gui.GUI;
 import com.aor.hero.viewer.Viewer;
 
 import java.io.IOException;
+import java.util.List;
 
 public abstract class State<T> {
     private final T model;
@@ -27,8 +28,8 @@ public abstract class State<T> {
     }
 
     public void step(Game game, GUI gui, long time) throws IOException {
-        GUI.ACTION action = gui.getNextAction();
-        controller.step(game, action, time);
+        List<GUI.ACTION> actions = gui.getNextActions();
+        controller.step(game, actions, time);
         viewer.draw(gui);
     }
 }

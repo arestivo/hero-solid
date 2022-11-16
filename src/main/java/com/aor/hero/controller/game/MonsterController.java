@@ -7,6 +7,7 @@ import com.aor.hero.model.game.arena.Arena;
 import com.aor.hero.model.game.elements.Monster;
 
 import java.io.IOException;
+import java.util.List;
 
 public class MonsterController extends GameController {
     private long lastMovement;
@@ -18,7 +19,7 @@ public class MonsterController extends GameController {
     }
 
     @Override
-    public void step(Game game, GUI.ACTION action, long time) throws IOException {
+    public void step(Game game, List<GUI.ACTION> actions, long time) throws IOException {
         if (time - lastMovement > 500) {
             for (Monster monster : getModel().getMonsters())
                 moveMonster(monster, monster.getPosition().getRandomNeighbour());

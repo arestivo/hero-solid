@@ -5,6 +5,8 @@ import com.aor.hero.gui.GUI;
 import com.aor.hero.model.Position;
 import com.aor.hero.model.game.arena.Arena;
 
+import java.util.List;
+
 public class HeroController extends GameController {
     public HeroController(Arena arena) {
         super(arena);
@@ -34,10 +36,10 @@ public class HeroController extends GameController {
     }
 
     @Override
-    public void step(Game game, GUI.ACTION action, long time) {
-        if (action == GUI.ACTION.UP) moveHeroUp();
-        if (action == GUI.ACTION.RIGHT) moveHeroRight();
-        if (action == GUI.ACTION.DOWN) moveHeroDown();
-        if (action == GUI.ACTION.LEFT) moveHeroLeft();
+    public void step(Game game, List<GUI.ACTION> actions, long time) {
+        if (actions.contains(GUI.ACTION.UP)) moveHeroUp();
+        if (actions.contains(GUI.ACTION.RIGHT)) moveHeroRight();
+        if (actions.contains(GUI.ACTION.DOWN)) moveHeroDown();
+        if (actions.contains(GUI.ACTION.LEFT)) moveHeroLeft();
     }
 }

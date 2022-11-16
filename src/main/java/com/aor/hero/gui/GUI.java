@@ -3,9 +3,10 @@ package com.aor.hero.gui;
 import com.aor.hero.model.Position;
 
 import java.io.IOException;
+import java.util.List;
 
 public interface GUI {
-    ACTION getNextAction() throws IOException;
+    List<ACTION> getNextActions() throws IOException;
 
     void drawHero(Position position);
 
@@ -21,5 +22,5 @@ public interface GUI {
 
     void close() throws IOException;
 
-    enum ACTION {UP, RIGHT, DOWN, LEFT, NONE, QUIT, SELECT}
+    enum ACTION {UP, RIGHT, DOWN, LEFT, QUIT, SELECT}
 }

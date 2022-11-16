@@ -7,6 +7,7 @@ import com.aor.hero.model.game.arena.RandomArenaBuilder;
 import net.jqwik.api.*;
 import net.jqwik.api.constraints.IntRange;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class ArenaIsClosedTest {
@@ -17,7 +18,7 @@ public class ArenaIsClosedTest {
         HeroController controller = new HeroController(arena);
 
         for (GUI.ACTION action : actions) {
-            controller.step(null, action, 100);
+            controller.step(null, Arrays.asList(action), 100);
             assert (controller.getModel().getHero().getPosition().getX() > 0);
             assert (controller.getModel().getHero().getPosition().getY() > 0);
             assert (controller.getModel().getHero().getPosition().getX() < width - 1);

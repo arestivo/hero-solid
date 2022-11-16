@@ -13,6 +13,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -44,7 +45,7 @@ class MonsterControllerTest {
         Monster monster = new Monster(5, 5);
         arena.setMonsters(Arrays.asList(monster));
 
-        controller.step(game, GUI.ACTION.NONE, 1000);
+        controller.step(game, new ArrayList<>(), 1000);
 
         assertNotEquals(new Position(5, 5), monster.getPosition());
     }
@@ -61,7 +62,7 @@ class MonsterControllerTest {
         ));
 
         for (int i = 0; i < 10; i++)
-            controller.step(game, GUI.ACTION.NONE, 1000);
+            controller.step(game, new ArrayList<>(), 1000);
 
         assertEquals(new Position(5, 5), monster.getPosition());
     }
@@ -80,7 +81,7 @@ class MonsterControllerTest {
 
         while (monster.getPosition().equals(new Position(5, 5))) {
             time += 500;
-            controller.step(game, GUI.ACTION.NONE, time);
+            controller.step(game, new ArrayList<>(), time);
         }
 
         assertEquals(new Position(5, 6), monster.getPosition());
