@@ -6,6 +6,7 @@ import com.aor.hero.model.game.elements.Key;
 import com.aor.hero.model.game.elements.Monster;
 import com.aor.hero.model.game.elements.Wall;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Arena {
@@ -21,6 +22,10 @@ public class Arena {
     public Arena(int width, int height) {
         this.width = width;
         this.height = height;
+        // Default starting Arena
+        this.walls = new ArrayList<>();
+        this.monsters = new ArrayList<>();
+        this.keys = new ArrayList<>();
     }
 
     public int getWidth() {
