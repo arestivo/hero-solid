@@ -23,5 +23,7 @@ public interface GUI {
 
     void close() throws IOException;
 
-    enum ACTION {UP, RIGHT, DOWN, LEFT, NONE, QUIT, SELECT}
+    void drawDoor(Position position);
+
+  enum ACTION {UP, RIGHT, DOWN, LEFT, NONE, QUIT, SELECT}
 }

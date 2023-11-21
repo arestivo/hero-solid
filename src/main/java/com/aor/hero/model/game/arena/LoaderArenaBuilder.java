@@ -1,5 +1,6 @@
 package com.aor.hero.model.game.arena;
 
+import com.aor.hero.model.game.elements.Door;
 import com.aor.hero.model.game.elements.Hero;
 import com.aor.hero.model.game.elements.Key;
 import com.aor.hero.model.game.elements.Monster;
@@ -73,15 +74,28 @@ public class LoaderArenaBuilder extends ArenaBuilder {
 
     @Override
     protected List<Key> createKeys() {
-        List<Key> monsters = new ArrayList<>();
+        List<Key> keys = new ArrayList<>();
 
         for (int y = 0; y < lines.size(); y++) {
             String line = lines.get(y);
             for (int x = 0; x < line.length(); x++)
-                if (line.charAt(x) == 'K') monsters.add(new Key(x, y));
+                if (line.charAt(x) == 'K') keys.add(new Key(x, y));
         }
 
-        return monsters;
+        return keys;
+    }
+
+    @Override
+    protected List<Door> createDoors() {
+        List<Door> doors = new ArrayList<>();
+
+        for (int y = 0; y < lines.size(); y++) {
+            String line = lines.get(y);
+            for (int x = 0; x < line.length(); x++)
+                if (line.charAt(x) == 'D') doors.add(new Door(x, y));
+        }
+
+        return doors;
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.aor.hero.model.game.arena;
 
+import com.aor.hero.model.game.elements.Door;
 import com.aor.hero.model.game.elements.Hero;
 import com.aor.hero.model.game.elements.Key;
 import com.aor.hero.model.game.elements.Monster;
@@ -71,6 +72,15 @@ public class RandomArenaBuilder extends ArenaBuilder {
             keys.add(new Key(rng.nextInt(width - 2) + 1, rng.nextInt(height - 2) + 1));
 
         return keys;
+    }
+
+    @Override
+    protected List<Door> createDoors() {
+        List<Door> doors = new ArrayList<>();
+
+        doors.add(new Door(rng.nextInt(width - 2) + 1, rng.nextInt(height - 2) + 1));
+
+        return doors;
     }
 
     @Override
