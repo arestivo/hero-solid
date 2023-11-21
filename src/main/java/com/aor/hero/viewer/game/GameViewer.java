@@ -21,6 +21,7 @@ public class GameViewer extends Viewer<Arena> {
         drawElements(gui, getModel().getKeys(), new KeyViewer());
 
         gui.drawText(new Position(0, 0), "Energy: " + getModel().getHero().getEnergy(), "#FFD700");
+        gui.drawText(new Position(13, 0), "Keys: " + getModel().getKeys().size(), "#FFD700");
     }
 
     private <T extends Element> void drawElements(GUI gui, List<T> elements, ElementViewer<T> viewer) {
