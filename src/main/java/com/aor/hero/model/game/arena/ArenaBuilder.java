@@ -1,6 +1,7 @@
 package com.aor.hero.model.game.arena;
 
 import com.aor.hero.model.game.elements.Hero;
+import com.aor.hero.model.game.elements.Key;
 import com.aor.hero.model.game.elements.Monster;
 import com.aor.hero.model.game.elements.Wall;
 
@@ -13,6 +14,7 @@ public abstract class ArenaBuilder {
         arena.setHero(createHero());
         arena.setMonsters(createMonsters());
         arena.setWalls(createWalls());
+        arena.setKeys(createKeys());
 
         return arena;
     }
@@ -24,6 +26,8 @@ public abstract class ArenaBuilder {
     protected abstract List<Wall> createWalls();
 
     protected abstract List<Monster> createMonsters();
+
+    protected abstract List<Key> createKeys();
 
     protected abstract Hero createHero();
 }

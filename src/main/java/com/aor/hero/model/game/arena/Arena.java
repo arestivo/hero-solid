@@ -2,9 +2,11 @@ package com.aor.hero.model.game.arena;
 
 import com.aor.hero.model.Position;
 import com.aor.hero.model.game.elements.Hero;
+import com.aor.hero.model.game.elements.Key;
 import com.aor.hero.model.game.elements.Monster;
 import com.aor.hero.model.game.elements.Wall;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Arena {
@@ -15,10 +17,15 @@ public class Arena {
 
     private List<Monster> monsters;
     private List<Wall> walls;
+    private List<Key> keys;
 
     public Arena(int width, int height) {
         this.width = width;
         this.height = height;
+        // Default starting Arena
+        this.walls = new ArrayList<>();
+        this.monsters = new ArrayList<>();
+        this.keys = new ArrayList<>();
     }
 
     public int getWidth() {
@@ -53,6 +60,14 @@ public class Arena {
         this.walls = walls;
     }
 
+    public List<Key> getKeys() {
+        return keys;
+    }
+
+    public void setKeys(List<Key> keys) {
+        this.keys = keys;
+    }
+
     public boolean isEmpty(Position position) {
         for (Wall wall : walls)
             if (wall.getPosition().equals(position))
@@ -65,5 +80,21 @@ public class Arena {
             if (monster.getPosition().equals(position))
                 return true;
         return false;
+    }
+
+    public boolean isKey(Position position) {
+        for (Key key : keys)
+            if (key.getPosition().equals(position))
+                return true;
+        return false;
+    }
+
+    public void removeKey(Position position) {
+        for (int i = 0; i < keys.size(); i++) {
+            if (keys.get(i).getPosition().equals(position)) {
+                keys.remove(keys.get(i));
+                return;
+            }
+        }
     }
 }
