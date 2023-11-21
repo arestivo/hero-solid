@@ -3,6 +3,7 @@ package com.aor.hero.controller;
 import com.aor.hero.controller.game.HeroController;
 import com.aor.hero.model.Position;
 import com.aor.hero.model.game.arena.Arena;
+import com.aor.hero.model.game.elements.Door;
 import com.aor.hero.model.game.elements.Hero;
 import com.aor.hero.model.game.elements.Wall;
 import org.junit.jupiter.api.BeforeEach;
@@ -37,9 +38,25 @@ class HeroControllerTest {
     }
 
     @Test
-    void moveHeroRightNotEmpty() {
+    void moveHeroRightNotEmptyWall() {
         arena.setWalls(Arrays.asList(new Wall(6, 5)));
         controller.moveHeroRight();
         assertEquals(new Position(5, 5), hero.getPosition());
+    }
+
+    @Test
+    void moveHeroRightNotEmptyDoor() {
+        arena.setDoors(Arrays.asList(new Door(6, 5)));
+        controller.moveHeroRight();
+        assertEquals(new Position(5, 5), hero.getPosition());
+    }
+
+    @Test
+    void moveHeroRightUnlockedDoor() {
+        Door door = new Door(6, 5);
+        arena.setDoors(Arrays.asList(door));
+        door.setLocked(false);
+        controller.moveHeroRight();
+        assertEquals(new Position(6, 5), hero.getPosition());
     }
 }
