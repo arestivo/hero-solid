@@ -2,6 +2,7 @@ package com.aor.hero.model.game.arena;
 
 import com.aor.hero.model.Position;
 import com.aor.hero.model.game.elements.Hero;
+import com.aor.hero.model.game.elements.Key;
 import com.aor.hero.model.game.elements.Monster;
 import com.aor.hero.model.game.elements.Wall;
 
@@ -15,6 +16,7 @@ public class Arena {
 
     private List<Monster> monsters;
     private List<Wall> walls;
+    private List<Key> keys;
 
     public Arena(int width, int height) {
         this.width = width;
@@ -53,6 +55,14 @@ public class Arena {
         this.walls = walls;
     }
 
+    public List<Key> getKeys() {
+        return keys;
+    }
+
+    public void setKeys(List<Key> keys) {
+        this.keys = keys;
+    }
+
     public boolean isEmpty(Position position) {
         for (Wall wall : walls)
             if (wall.getPosition().equals(position))
@@ -63,6 +73,13 @@ public class Arena {
     public boolean isMonster(Position position) {
         for (Monster monster : monsters)
             if (monster.getPosition().equals(position))
+                return true;
+        return false;
+    }
+
+    public boolean isKey(Position position) {
+        for (Key key : keys)
+            if (key.getPosition().equals(position))
                 return true;
         return false;
     }

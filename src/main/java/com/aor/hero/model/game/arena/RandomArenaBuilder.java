@@ -1,6 +1,7 @@
 package com.aor.hero.model.game.arena;
 
 import com.aor.hero.model.game.elements.Hero;
+import com.aor.hero.model.game.elements.Key;
 import com.aor.hero.model.game.elements.Monster;
 import com.aor.hero.model.game.elements.Wall;
 
@@ -14,13 +15,15 @@ public class RandomArenaBuilder extends ArenaBuilder {
     private final int width;
     private final int height;
     private final int numberOfMonsters;
+    private final int numberOfKeys;
 
-    public RandomArenaBuilder(int width, int height, int numberOfMonsters) {
+    public RandomArenaBuilder(int width, int height, int numberOfMonsters, int numberOfKeys) {
         this.rng = new Random();
 
         this.width = width;
         this.height = height;
         this.numberOfMonsters = numberOfMonsters;
+        this.numberOfKeys = numberOfKeys;
     }
 
     @Override
@@ -58,6 +61,16 @@ public class RandomArenaBuilder extends ArenaBuilder {
             monsters.add(new Monster(rng.nextInt(width - 2) + 1, rng.nextInt(height - 2) + 1));
 
         return monsters;
+    }
+
+    @Override
+    protected List<Key> createKeys() {
+        List<Key> keys = new ArrayList<>();
+
+        while (keys.size() < numberOfKeys)
+            keys.add(new Key(rng.nextInt(width - 2) + 1, rng.nextInt(height - 2) + 1));
+
+        return keys;
     }
 
     @Override
