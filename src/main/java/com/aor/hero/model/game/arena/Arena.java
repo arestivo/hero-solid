@@ -84,7 +84,7 @@ public class Arena {
             if (wall.getPosition().equals(position))
                 return false;
         for (Door door : doors)
-            if (door.getPosition().equals(position))
+            if (door.isLocked() && door.getPosition().equals(position))
                 return false;
         return true;
     }
