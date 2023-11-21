@@ -2,9 +2,7 @@ package com.aor.hero.viewer;
 
 import com.aor.hero.gui.GUI;
 import com.aor.hero.model.game.elements.Door;
-import com.aor.hero.model.game.elements.Hero;
 import com.aor.hero.viewer.game.DoorViewer;
-import com.aor.hero.viewer.game.HeroViewer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -24,6 +22,6 @@ public class DoorViewerTest {
   @Test
   void drawElement() {
     viewer.draw(door, gui);
-    Mockito.verify(gui, Mockito.times(1)).drawDoor(door.getPosition());
+    Mockito.verify(gui, Mockito.times(1)).drawDoor(door.getPosition(), door.isLocked());
   }
 }

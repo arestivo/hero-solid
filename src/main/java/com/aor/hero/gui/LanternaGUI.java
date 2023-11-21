@@ -102,8 +102,8 @@ public class LanternaGUI implements GUI {
     }
 
     @Override
-    public void drawDoor(Position position) {
-        drawCharacter(position.getX(), position.getY(), 'D', "#634901");
+    public void drawDoor(Position position, boolean isLocked) {
+        drawCharacter(position.getX(), position.getY(), 'D', isLocked ? "#634901" : "#61605f");
     }
 
     @Override
