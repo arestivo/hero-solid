@@ -22,9 +22,12 @@ public class ArenaController extends GameController {
     }
 
     public void step(Game game, GUI.ACTION action, long time) throws IOException {
-        if (action == GUI.ACTION.QUIT || getModel().getHero().getEnergy() == 0)
+        if (action == GUI.ACTION.QUIT || getModel().getHero().getEnergy() == 0) { // Lose
             game.setState(new MenuState(new Menu()));
-        else {
+        } else if (getModel().isDoor(getModel().getHero().getPosition())) { // Win
+            game.setState(new MenuState(new Menu()));
+        }
+        else { // Continue playing
             heroController.step(game, action, time);
             monsterController.step(game, action, time);
             doorController.step(game, action, time);
