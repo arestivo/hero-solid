@@ -83,4 +83,13 @@ public class Arena {
                 return true;
         return false;
     }
+
+    public void removeKey(Position position) {
+        for (int i = 0; i < keys.size(); i++) {
+            if (keys.get(i).getPosition().equals(position)) {
+                keys.remove(keys.get(i));
+                return;
+            }
+        }
+    }
 }
